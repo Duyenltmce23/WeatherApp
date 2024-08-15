@@ -134,7 +134,7 @@ export const WeatherApp = () => {
                 <div className='w-1/2 lg:w-1/3   py-5 px-4'>
                     <Card sx={{ backgroundColor: '#383838', color: '#FFFFFF' }} >
                         <CardContent>
-                            <div className='flex justify-between items-center'>
+                            <div className='flex md:flex-row flex-col justify-between items-center'>
                                 <div>
                                     <p className='text-3xl font-bold'>
                                         {cities},VN
@@ -147,27 +147,27 @@ export const WeatherApp = () => {
                                     <img src={`src/assets/icons/${weather.icon}.png`} alt="Cloud" />
                                 </div>
                             </div>
-                            <div className='flex justify-between items-center my-3'>
-                                <div className='w-1/2'>
-                                    <p className='text-5xl md:text-7xl lg:text-8xl font-bold'>{weather.feels_like}&deg;C</p>
+                            <div className='flex md:flex-row flex-col justify-between items-center my-3'>
+                                <div className='w-full md:w-1/2 flex'>
+                                    <p className='w-full text-center justify-center text-5xl md:text-6xl xl:text-7xl font-bold'>{weather.feels_like}&deg;C</p>
                                 </div>
-                                <div className='w-1/2'>
-                                    <p>Details</p>
+                                <div className='w-full md:w-1/2 mt-5'>
+                                    <p className='leading-5'>Details</p>
                                     <div className='flex justify-between'>
-                                        <p>Feels like</p>
-                                        <p className='font-bold'>{weather.feels_like}&deg;C</p>
+                                        <p className='leading-5'>Feels like</p>
+                                        <p className='font-bold leading-5'>{weather.feels_like}&deg;C</p>
+                                    </div>
+                                    <div className='flex justify-between items-center'>
+                                        <p className='leading-5'>Wind Speed</p>
+                                        <p className='font-bold leading-5'>{weather.speed}m/s</p>
                                     </div>
                                     <div className='flex justify-between'>
-                                        <p>Wind Speed</p>
-                                        <p className='font-bold'>{weather.speed}m/s</p>
+                                        <p className='leading-5'>Humidity</p>
+                                        <p className='font-bold leading-5'>{weather.humidity}%</p>
                                     </div>
                                     <div className='flex justify-between'>
-                                        <p>Humidity</p>
-                                        <p className='font-bold'>{weather.humidity}%</p>
-                                    </div>
-                                    <div className='flex justify-between'>
-                                        <p>Pressure</p>
-                                        <p className='font-bold'>{weather.pressure}hPa</p>
+                                        <p className='leading-5'>Pressure</p>
+                                        <p className='font-bold leading-5'>{weather.pressure}hPa</p>
                                     </div>
                                 </div>
 
@@ -189,7 +189,7 @@ export const WeatherApp = () => {
                             return (
                                 <div key={index} className='my-2'>
                                     <div className='bg-neutral-200 mx-5 p-5 border border-neutral-200 rounded-2xl
-                flex justify-between' onClick={() => { setShow(true); setIndexClick(index); }}>
+                flex justify-between' onClick={() => { if (index === indexClick) { setShow(!show) } else setShow(true); setIndexClick(index); }}>
                                         <div className='flex items-center'>
                                             <img className='w-10' src={`src/assets/icons/${value.weather[0].icon}.png`} alt="Sun" />
                                             <p className='px-5 font-bold'>{dayOfWeek}</p>
@@ -219,7 +219,7 @@ export const WeatherApp = () => {
                                                 <p className='text-neutral-700'>Humidity</p>
                                                 <p>{value.main.humidity}%</p>
                                             </div>
-                                            <div className='flex justify-between'>
+                                            <div className='flex justify-between items-center'>
                                                 <p className='text-neutral-700'>Wind Speed</p>
                                                 <p>{value.wind.speed}m/s</p>
                                             </div>
