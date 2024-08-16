@@ -105,7 +105,7 @@ export const WeatherApp = () => {
                                     <p className='w-full text-center justify-center text-5xl md:text-6xl xl:text-7xl font-bold'>{weather.feels_like}&deg;C</p>
                                 </div>
                                 <div className='w-full md:w-1/2 mt-5'>
-                                    <p className='leading-5'>Details</p>
+                                    <p className='leading-5 font-bold'>Details</p>
                                     <div className='flex justify-between'>
                                         <p className='leading-5'>Feels like</p>
                                         <p className='font-bold leading-5'>{weather.feels_like}&deg;C</p>

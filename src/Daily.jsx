@@ -18,13 +18,11 @@ const Daily = () => {
             const res = await fetch(url);
             const data = await res.json();
 
-            const secondDate = data.list[5]
-            const thirdDate = data.list[13]
-            const fourthDate = data.list[21]
-            const fifthDate = data.list[29]
-            const sixthDate = data.list[37]
-            setDaily([secondDate, thirdDate, fourthDate, fifthDate, sixthDate])
-            console.log(daily)
+            const daily = data.list.filter((item) => item.dt_txt.split(' ')[1].split(':')[0] === '09');
+
+            daily.splice(0, 1);
+
+            setDaily(daily);
         } catch (error) {
             console.log(error)
         }
@@ -32,8 +30,7 @@ const Daily = () => {
 
     useEffect(() => {
         getDaily();
-    }
-        , [coordinate])
+    }, [coordinate])
 
     return (
         <div>
